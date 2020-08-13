@@ -1,0 +1,17 @@
+#IntelliJ
+.idea
+*.iml
+.run
+
+#OS
+.DS_Store
+
+#Generated
+target
+cap-aa-business-logic/build
+
+#VSCode
+.classpath
+.factorypath
+.project
+.settings

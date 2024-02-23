@@ -1,4 +1,4 @@
-package com.aman.multithreading.scaler;
+package com.aman.multithreading.scaler.adderSubtracter;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -34,37 +34,39 @@ public class IncrementAndDecrementCounter {
     }
 
 
-}
+    static class Counter {
+        int value;
 
-class Counter {
-    int value;
-
-}
-class Adder implements Runnable {
-    Counter counter;
-
-    public Adder(Counter counter) {
-        this.counter = counter;
     }
-    @Override
-    public void run() {
-        for(int i=0; i<10000; i++) {
-            counter.value+= 1;
+
+    static class Adder implements Runnable {
+        Counter counter;
+
+        public Adder(Counter counter) {
+            this.counter = counter;
+        }
+
+        @Override
+        public void run() {
+            for (int i = 0; i < 10000; i++) {
+                counter.value += 1;
+            }
+        }
+    }
+
+    static class Subtracter implements Runnable {
+        Counter counter;
+
+        public Subtracter(Counter counter) {
+            this.counter = counter;
+        }
+
+        @Override
+        public void run() {
+            for (int i = 0; i < 10000; i++) {
+                counter.value -= 1;
+            }
         }
     }
 }
 
-class Subtracter implements Runnable {
-    Counter counter;
-
-    public Subtracter(Counter counter) {
-        this.counter = counter;
-    }
-
-    @Override
-    public void run() {
-        for(int i=0; i<10000; i++) {
-            counter.value-= 1;
-        }
-    }
-}
